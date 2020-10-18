@@ -1,6 +1,8 @@
 <script>
     let showPanel = false
 
+    let selectedArea = ""
+
     const listOfArea = [
         "Canggu",
         "Seminyak",
@@ -10,6 +12,11 @@
     ]
 
     const setPanelState = (state) => () => showPanel = state
+
+    const selectArea = (area) => {
+        selectedArea = area
+        setPanelState(false)
+    }
 </script>
 
 <style>
@@ -78,14 +85,15 @@
                 type="text"
                 autocomplete="off"
                 on:focus={setPanelState(true)}
+                bind:value={selectedArea}
                 placeholder="Where are you going?">
     </label>
     <div
             class="panel"
             class:active={showPanel}
-            on:focus={setPanelState(false)}>
+            on:click={setPanelState(false)}>
         {#each listOfArea as area}
-            <div class="search-item">
+            <div class="search-item" on:click={() => selectArea(area)}>
                 {area}
             </div>
         {/each}
