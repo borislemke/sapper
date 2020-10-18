@@ -1,21 +1,22 @@
 <script>
-	import Nav from '../components/Nav.svelte';
+	// import Nav from '../components/Nav.svelte';
 
 	export let segment;
 </script>
 
 <style>
+	:global(body) {
+		background-color: rgba(10, 20, 30, .1);
+	}
+
 	main {
-		position: relative;
-		max-width: 56em;
-		background-color: white;
-		padding: 2em;
-		margin: 0 auto;
-		box-sizing: border-box;
+		max-width: 100vw;
+		min-height: 100vh;
+		overflow-x: hidden;
 	}
 </style>
 
-<Nav {segment}/>
+<!--<Nav {segment}/>-->
 
 <main>
 	<slot></slot>
